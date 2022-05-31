@@ -108,7 +108,7 @@ class SMBAttack(ProtocolAttack):
                     samFileName = remoteOps.saveSAM()
                     samHashes = SAMHashes(samFileName, bootKey, isRemote = True)
                     samHashes.dump()
-                    samHashes.export(self.__SMBConnection.getRemoteHost()+'_samhashes')
+                    samHashes.export(self.config.lootdir+"/"+self.__SMBConnection.getRemoteHost()+'_samhashes')
                     LOG.info("Done dumping SAM hashes for host: %s", self.__SMBConnection.getRemoteHost())
             except Exception as e:
                 LOG.error(str(e))
